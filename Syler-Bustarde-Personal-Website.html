@@ -1,0 +1,1136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Syler Bustarde | Personal Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --purple: #32166f;
+      --yellow: #ffd02f;
+      --coral: #f57952;
+      --cream: #fcf8ef;
+      --paper: #fffdf8;
+      --muted: #655d78;
+      --line: #eadfcd;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--purple);
+      font: 16px/1.6 "DM Sans", sans-serif;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Space Grotesk", sans-serif;
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(3.4rem, 8vw, 7.5rem);
+      letter-spacing: -0.07em;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      letter-spacing: -0.05em;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 0;
+    }
+
+    .brand {
+      color: var(--purple);
+      font: 700 1.65rem "Space Grotesk";
+      letter-spacing: -0.06em;
+      text-decoration: none;
+      text-shadow: 2px 2px 0 var(--yellow);
+    }
+
+    .brand span {
+      color: var(--coral);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .navlinks a {
+      color: var(--purple);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navlinks a:hover {
+      color: var(--coral);
+    }
+
+    .hero {
+      padding: 70px 0 115px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 410px;
+      height: 410px;
+      border-radius: 50%;
+      background: var(--yellow);
+      right: -150px;
+      top: 30px;
+      opacity: 0.7;
+      z-index: -1;
+      box-shadow:
+        0 0 0 18px #32166f55,
+        0 0 0 36px #f5795244;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      color: var(--purple);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin: 30px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--purple);
+      color: white;
+      text-decoration: none;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-weight: 700;
+      margin-right: 9px;
+    }
+
+    .btn.alt {
+      background: transparent;
+      color: var(--purple);
+      border: 1px solid var(--purple);
+    }
+
+    .note {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 28px;
+      border-radius: 22px;
+      box-shadow: 8px 8px 0 var(--yellow);
+      transform: rotate(2deg);
+    }
+
+    .note strong {
+      font: 600 2rem "Space Grotesk";
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .section {
+      padding: 95px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .section-head p {
+      max-width: 390px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .about-grid p {
+      font-size: 1.12rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 13px;
+      background: var(--paper);
+      font-weight: 500;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 25px;
+      min-height: 270px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 14px 25px #32166f22;
+    }
+
+    .card-cover {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .card a:not(.card-cover) {
+      position: relative;
+      z-index: 2;
+    }
+
+    .card .tag {
+      color: var(--coral);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 10px 0;
+    }
+
+    .card a {
+      color: var(--purple);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .number {
+      font: 700 2.8rem "Space Grotesk";
+      color: var(--yellow);
+    }
+
+    .detail-box {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 32px;
+      max-width: 850px;
+    }
+
+    .detail-box h3 {
+      margin-top: 0;
+    }
+
+    .detail-box h3:not(:first-child) {
+      margin-top: 28px;
+    }
+
+    .detail-box p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .business-card-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .business-card-showcase figure {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      margin: 0;
+    }
+
+    .business-card-showcase img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .business-card-showcase figcaption {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 12px;
+    }
+
+    .requirements {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .requirement {
+      padding: 18px 20px;
+      background: var(--paper);
+      border-left: 5px solid var(--purple);
+      border-top: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .requirement strong {
+      display: block;
+      font-family: "Space Grotesk";
+      margin-bottom: 4px;
+    }
+
+    .tracker {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 20px;
+    }
+
+    .tracker img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--line);
+    }
+
+    .tracker figcaption {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 12px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .gallery-item {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 12px;
+      margin: 0;
+    }
+
+    .gallery-item summary {
+      list-style: none;
+      cursor: zoom-in;
+    }
+
+    .gallery-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .gallery-item summary img {
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+      background: #f3eee5;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .gallery-zoom {
+      display: none;
+    }
+
+    .gallery-item[open] {
+      grid-column: 1 / -1;
+    }
+
+    .gallery-item[open] .gallery-zoom {
+      width: 100%;
+      max-height: 78vh;
+      object-fit: contain;
+      background: #f3eee5;
+      display: block;
+      border-radius: 10px;
+      cursor: zoom-out;
+    }
+
+    .gallery-item figcaption {
+      font-weight: 700;
+      color: var(--purple);
+      padding: 12px 4px 2px;
+    }
+
+    .contact {
+      background: var(--purple);
+      color: white;
+      border-radius: 22px;
+      padding: 55px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+    }
+
+    .contact p {
+      color: #eee7ff;
+      font-size: 1.1rem;
+    }
+
+    .contact a {
+      color: white;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 15px;
+      align-content: center;
+    }
+
+    .contact-item {
+      border-bottom: 1px solid #ffffff55;
+      padding-bottom: 12px;
+    }
+
+    .contact-item span {
+      display: block;
+      color: #ffd965;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .footer {
+      padding: 35px 0;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 780px) {
+      .nav {
+        display: block;
+      }
+
+      .navlinks {
+        margin-top: 15px;
+        justify-content: flex-start;
+      }
+
+      .intro-grid,
+      .about-grid,
+      .contact,
+      .business-card-showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .work-grid,
+      .requirements,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 35px;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .contact {
+        padding: 30px;
+      }
+
+      .note {
+        margin: 20px 12px 0;
+      }
+
+      .footer {
+        display: block;
+      }
+
+      .footer span {
+        display: block;
+        margin-top: 8px;
+      }
+
+      .brand {
+        font-size: 1.35rem;
+      }
+
+      .gallery-item summary img {
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="wrap nav">
+    <a class="brand" href="#home">Syler <span>Bustarde</span></a>
+
+    <nav class="navlinks">
+      <a href="#about">About</a>
+      <a href="#works">Works</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#business-card">Business Card</a>
+      <a href="#progress">Progress</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap hero" id="home">
+      <div class="intro-grid">
+        <div>
+          <div class="eyebrow">Self-development portfolio · 2026</div>
+
+          <h1>Growing with purpose.</h1>
+
+          <p>
+            Hi, I’m Syler Bustarde—a computing student and creative learner
+            building skills, confidence, and meaningful work one project at a time.
+          </p>
+
+          <a class="btn" href="#works">Explore my work</a>
+          <a class="btn alt" href="#contact">Let’s connect</a>
+        </div>
+
+        <aside class="note">
+          <strong>My vision</strong>
+          <p>
+            To keep learning, create with intention, and become a professional
+            who brings both technical ability and a thoughtful human perspective
+            to every project.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>About me</h2>
+          <p>
+            A quick look at the person behind the portfolio and the strengths
+            I bring to my growth journey.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div>
+            <p>
+              I’m Syler Bustarde, a student interested in web design, technology,
+              and creative communication. Through this course, I learned to
+              reflect on my habits, manage challenges, and turn personal insights
+              into practical goals.
+            </p>
+
+            <p>
+              I enjoy going to the gym, playing badminton, basketball, and table
+              tennis, and traveling. These interests help me stay active,
+              disciplined, curious, and open to new experiences.
+            </p>
+          </div>
+
+          <div>
+            <h3>Skills & strengths</h3>
+
+            <div class="chips">
+              <span class="chip">HTML & CSS</span>
+              <span class="chip">Creative design</span>
+              <span class="chip">Problem solving</span>
+              <span class="chip">Teamwork</span>
+              <span class="chip">Adaptability</span>
+              <span class="chip">Self-awareness</span>
+              <span class="chip">Time management</span>
+              <span class="chip">Persistence</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="works">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Best works</h2>
+          <p>
+            Click any project to open its full view, explanation, and role
+            in my self-development journey.
+          </p>
+        </div>
+
+        <div class="work-grid">
+          <article class="card">
+            <a class="card-cover" href="#project-strengths"></a>
+            <div>
+              <div class="number">01</div>
+              <div class="tag">Self-awareness</div>
+              <h3>Strengths Map</h3>
+              <p>
+                An exploration of my qualities, learning style, and strengths.
+              </p>
+            </div>
+            <a href="#project-strengths">View full work</a>
+          </article>
+
+          <article class="card">
+            <a class="card-cover" href="#project-career"></a>
+            <div>
+              <div class="number">02</div>
+              <div class="tag">Career direction</div>
+              <h3>Career Goal & SMART Goals</h3>
+              <p>
+                A focused gap analysis and action plan for my future direction.
+              </p>
+            </div>
+            <a href="#project-career">View full work</a>
+          </article>
+
+          <article class="card">
+            <a class="card-cover" href="#project-time"></a>
+            <div>
+              <div class="number">03</div>
+              <div class="tag">Personal growth</div>
+              <h3>Time & Stress Plan</h3>
+              <p>
+                A practical plan for prioritizing tasks and improving productivity.
+              </p>
+            </div>
+            <a href="#project-time">View full work</a>
+          </article>
+
+          <article class="card">
+            <a class="card-cover" href="#project-conflict"></a>
+            <div>
+              <div class="number">04</div>
+              <div class="tag">Communication</div>
+              <h3>Conflict Management Plan</h3>
+              <p>
+                A reflection on responding to conflict with more awareness.
+              </p>
+            </div>
+            <a href="#project-conflict">View full work</a>
+          </article>
+
+          <article class="card">
+            <a class="card-cover" href="#project-card"></a>
+            <div>
+              <div class="number">05</div>
+              <div class="tag">Brand identity</div>
+              <h3>Personal Branding Business Card</h3>
+              <p>
+                A visual identity exercise showing my branding and contact details.
+              </p>
+            </div>
+            <a href="#project-card">View full work</a>
+          </article>
+
+          <article class="card">
+            <a class="card-cover" href="#project-intro"></a>
+            <div>
+              <div class="number">06</div>
+              <div class="tag">Creative expression</div>
+              <h3>Self-Introduction Poster</h3>
+              <p>
+                A visual introduction combining my interests and aspirations.
+              </p>
+            </div>
+            <a href="#project-intro">View full work</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="project-strengths">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Strengths Map</h2>
+          <p>Full project view · self-awareness</p>
+        </div>
+
+        <div class="detail-box">
+          <h3>What this work is about</h3>
+          <p>
+            This project helped me identify my personal qualities, learning
+            preferences, and abilities. It gave me a clearer understanding of
+            how my strengths can support my academic work, teamwork, and future career.
+          </p>
+
+          <h3>What I learned</h3>
+          <p>
+            I learned that self-awareness is useful when making decisions and
+            improving habits. Knowing my strengths also helped me recognize areas
+            where I still need practice.
+          </p>
+
+          <a class="btn alt" href="#works">Back to works</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="project-career">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Career Goal & SMART Goals</h2>
+          <p>Full project view · career direction</p>
+        </div>
+
+        <div class="detail-box">
+          <h3>What this work is about</h3>
+          <p>
+            This project connects my current skills with my future professional
+            direction through a gap analysis and specific SMART goals.
+          </p>
+
+          <h3>What I learned</h3>
+          <p>
+            I learned how to turn a broad career dream into smaller, measurable
+            actions and realistic professional goals.
+          </p>
+
+          <a class="btn alt" href="#works">Back to works</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="project-time">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Time & Stress Management Plan</h2>
+          <p>Full project view · personal growth</p>
+        </div>
+
+        <div class="detail-box">
+          <h3>What this work is about</h3>
+          <p>
+            This plan focuses on prioritizing important issues, organizing tasks,
+            and using practical habits to reduce stress and improve productivity.
+          </p>
+
+          <h3>What I learned</h3>
+          <p>
+            Completing small tasks, taking breaks, and reflecting on challenges
+            helped me feel more productive.
+          </p>
+
+          <a class="btn alt" href="#progress">See progress evidence</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="project-conflict">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Conflict Management Plan</h2>
+          <p>Full project view · communication</p>
+        </div>
+
+        <div class="detail-box">
+          <h3>What this work is about</h3>
+          <p>
+            This project explores how I respond to conflict and how I can
+            communicate more calmly, listen better, and manage emotions.
+          </p>
+
+          <h3>What I learned</h3>
+          <p>
+            I learned that conflict can be handled more positively when I pause,
+            understand other perspectives, and focus on solving the issue.
+          </p>
+
+          <a class="btn alt" href="#progress">See progress evidence</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="project-card">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Personal Branding Business Card</h2>
+          <p>Full project view · brand identity</p>
+        </div>
+
+        <div class="detail-box">
+          <h3>What this work is about</h3>
+          <p>
+            This branding project reimagines Yahoo with a friendly digital identity,
+            the tagline “Make every moment matter,” and an orbit-inspired logo.
+          </p>
+
+          <h3>What I learned</h3>
+          <p>
+            I learned how color, typography, layout, and symbols can communicate
+            a brand personality.
+          </p>
+
+          <a class="btn alt" href="#business-card">View business card</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="project-intro">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Creative Self-Introduction</h2>
+          <p>Full project view · creative expression</p>
+        </div>
+
+        <div class="detail-box">
+          <h3>What this work is about</h3>
+          <p>
+            This creative output introduces my personality, interests, strengths,
+            and goals through a visual presentation.
+          </p>
+
+          <h3>What I learned</h3>
+          <p>
+            I learned how to present myself more confidently and communicate who
+            I am as a student, creator, and future professional.
+          </p>
+
+          <a class="btn alt" href="#works">Back to works</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="business-card">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>My business card</h2>
+          <p>
+            This personal branding output uses a cream, purple, yellow,
+            and orbit-inspired visual identity.
+          </p>
+        </div>
+
+        <div class="business-card-showcase">
+          <figure>
+            <img src="business-card-back.png"
+                 alt="Syler Bustarde Yahoo Digital Services business card">
+            <figcaption>Business card design</figcaption>
+          </figure>
+
+          <figure>
+            <img src="business-card.png"
+                 alt="Syler Bustarde branding explanation">
+            <figcaption>Brand concept and design explanation</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="progress">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Progress evidence</h2>
+          <p>
+            My two-week trackers document my habits, challenges,
+            energy levels, and reflections.
+          </p>
+        </div>
+
+        <div class="requirements">
+          <div class="requirement">
+            <strong>Self-Development Plan 1</strong>
+            Time and stress management.
+          </div>
+
+          <div class="requirement">
+            <strong>Self-Development Plan 2</strong>
+            Conflict management and self-awareness.
+          </div>
+
+          <div class="requirement">
+            <strong>Career direction</strong>
+            Gap analysis and SMART goals.
+          </div>
+
+          <div class="requirement">
+            <strong>Creative identity</strong>
+            Personal branding and self-introduction.
+          </div>
+        </div>
+
+        <figure class="tracker">
+          <img src="plan-1-tracker.png"
+               alt="Self-Development Plan 1 progress tracker">
+          <figcaption>Plan 1 progress tracker</figcaption>
+        </figure>
+
+        <figure class="tracker">
+          <img src="plan-2-tracker.png"
+               alt="Self-Development Plan 2 progress tracker">
+          <figcaption>Plan 2 progress tracker</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Work gallery</h2>
+          <p>
+            Click any picture to zoom it inside this website.
+            Click it again to close the zoomed view.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <details class="gallery-item">
+            <summary>
+              <img src="strengths-map-1.png"
+                   alt="Strengths Map page 1">
+            </summary>
+            <img class="gallery-zoom"
+                 src="strengths-map-1.png"
+                 alt="Enlarged Strengths Map page 1">
+            <figcaption>Strengths Map page 1</figcaption>
+          </details>
+
+          <details class="gallery-item">
+            <summary>
+              <img src="strengths-map-2.png"
+                   alt="Strengths Map page 2">
+            </summary>
+            <img class="gallery-zoom"
+                 src="strengths-map-2.png"
+                 alt="Enlarged Strengths Map page 2">
+            <figcaption>Strengths Map page 2</figcaption>
+          </details>
+
+          <details class="gallery-item">
+            <summary>
+              <img src="plan-1-tracker.png"
+                   alt="Plan 1 tracker">
+            </summary>
+            <img class="gallery-zoom"
+                 src="plan-1-tracker.png"
+                 alt="Enlarged Plan 1 tracker">
+            <figcaption>Plan 1 progress tracker</figcaption>
+          </details>
+
+          <details class="gallery-item">
+            <summary>
+              <img src="plan-2-tracker.png"
+                   alt="Plan 2 tracker">
+            </summary>
+            <img class="gallery-zoom"
+                 src="plan-2-tracker.png"
+                 alt="Enlarged Plan 2 tracker">
+            <figcaption>Plan 2 progress tracker</figcaption>
+          </details>
+
+          <details class="gallery-item">
+            <summary>
+              <img src="business-card-back.png"
+                   alt="Personal branding business card">
+            </summary>
+            <img class="gallery-zoom"
+                 src="business-card-back.png"
+                 alt="Enlarged business card">
+            <figcaption>Personal branding card</figcaption>
+          </details>
+
+          <details class="gallery-item">
+            <summary>
+              <img src="self-introduction-1.png"
+                   alt="Creative self-introduction">
+            </summary>
+            <img class="gallery-zoom"
+                 src="self-introduction-1.png"
+                 alt="Enlarged creative self-introduction">
+            <figcaption>Creative self-introduction</figcaption>
+          </details>
+
+          <details class="gallery-item">
+            <summary>
+              <img src="career-goal-1.png"
+                   alt="Career goal page 1">
+            </summary>
+            <img class="gallery-zoom"
+                 src="career-goal-1.png"
+                 alt="Enlarged career goal page 1">
+            <figcaption>Career goal</figcaption>
+          </details>
+
+          <details class="gallery-item">
+            <summary>
+              <img src="career-goal-2.png"
+                   alt="Career goal page 2">
+            </summary>
+            <img class="gallery-zoom"
+                 src="career-goal-2.png"
+                 alt="Enlarged career goal page 2">
+            <figcaption>Career goal continued</figcaption>
+          </details>
+
+          <details class="gallery-item">
+            <summary>
+              <img src="plan1-part1-1.png"
+                   alt="Self-Development Plan 1 page 1">
+            </summary>
+            <img class="gallery-zoom"
+                 src="plan1-part1-1.png"
+                 alt="Enlarged Self-Development Plan 1 page 1">
+            <figcaption>Plan 1 development plan</figcaption>
+          </details>
+
+          <details class="gallery-item">
+            <summary>
+              <img src="plan1-part2-1.png"
+                   alt="Plan 1 creative report">
+            </summary>
+            <img class="gallery-zoom"
+                 src="plan1-part2-1.png"
+                 alt="Enlarged Plan 1 creative report">
+            <figcaption>Plan 1 creative report</figcaption>
+          </details>
+
+          <details class="gallery-item">
+            <summary>
+              <img src="plan2-part1-1.png"
+                   alt="Self-Development Plan 2">
+            </summary>
+            <img class="gallery-zoom"
+                 src="plan2-part1-1.png"
+                 alt="Enlarged Self-Development Plan 2">
+            <figcaption>Plan 2 development plan</figcaption>
+          </details>
+
+          <details class="gallery-item">
+            <summary>
+              <img src="plan2-part2-1.png"
+                   alt="Plan 2 creative report">
+            </summary>
+            <img class="gallery-zoom"
+                 src="plan2-part2-1.png"
+                 alt="Enlarged Plan 2 creative report">
+            <figcaption>Plan 2 creative report</figcaption>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <div>
+            <div class="eyebrow" style="color:#f3c969">
+              Let’s connect
+            </div>
+
+            <h2>Have a project or idea?</h2>
+
+            <p>
+              I’m always open to learning, collaborating, and meeting people
+              who value creativity and growth.
+            </p>
+          </div>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <span>Email</span>
+              <a href="mailto:syler.bustarde@ciit.edu.ph">
+                syler.bustarde@ciit.edu.ph
+              </a>
+            </div>
+
+            <div class="contact-item">
+              <span>Phone</span>
+              <a href="tel:+63997962316">
+                0997 962 316
+              </a>
+            </div>
+
+            <div class="contact-item">
+              <span>LinkedIn</span>
+              <a href="https://www.linkedin.com/in/syler-bustarde-629072452/"
+                 target="_blank">
+                View my LinkedIn profile
+              </a>
+            </div>
+
+            <div class="contact-item">
+              <span>Location</span>
+              Philippines
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <span>© 2026 Syler Bustarde</span>
+    <span>Built with curiosity, consistency, and purpose.</span>
+  </footer>
+</body>
+</html>
